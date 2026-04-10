@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NewsBD Hub — বাংলাদেশের প্রধান নিউজ হাব</title>
+<meta name="description" content="NewsBD Hub: বাংলাদেশের প্রধান  বাংলা নিউজ পোর্টালের প্রফেশনাল নিউজ হাব। রাজনীতি, বিনোদন, খেলা, আন্তর্জাতিক ও দেশীয় খবর সহ সর্বশেষ সংবাদ।">
+<meta name="keywords" content="NewsBD Hub, বাংলা খবর, বাংলাদেশ, প্রথম আলো, যুগান্তর, ইনকিলাব, দৈনিক জনকণ্ঠ, সমকাল, The Daily Star, Dhaka Tribune, BDNews24, রাজনীতি, বিনোদন, খেলা, আন্তর্জাতিক সংবাদ">
+
+<link rel="canonical" href="https://newsbd.psychotech.top/newsbdhub.html">
+
+<meta property="og:title" content="NewsBD Hub — বাংলাদেশের প্রধান নিউজ হাব">
+<meta property="og:description" content="NewsBD Hub: বাংলাদেশের প্রধান  বাংলা নিউজ পোর্টালের প্রফেশনাল নিউজ হাব। রাজনীতি, বিনোদন, খেলা, আন্তর্জাতিক ও দেশীয় খবর সহ সর্বশেষ সংবাদ।">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://newsbd.psychotech.top/newsbdhub.html">
+<meta property="og:image" content="./newsbd_cover.png">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NewsBD Hub — বাংলাদেশের প্রধান নিউজ হাব">
+<meta name="twitter:description" content="NewsBD Hub: বাংলাদেশের প্রধান  বাংলা নিউজ পোর্টালের প্রফেশনাল নিউজ হাব। রাজনীতি, বিনোদন, খেলা, আন্তর্জাতিক ও দেশীয় খবর সহ সর্বশেষ সংবাদ।">
+<meta name="twitter:image" content="./newsbd_cover.png">
+<link rel="icon" href="./newsbd.png" type="image/png">
+<link rel="manifest" href="./manifest.json">
+<link rel="alternate" hreflang="bn" href="https://newsbd.psychotech.top/newsbdhub.html">
+<link rel="alternate" hreflang="en" href="https://newsbd.psychotech.top/newsbdhub.html">
+<link rel="alternate" hreflang="x-default" href="https://newsbd.psychotech.top/newsbdhub.html">
+<link rel="apple-touch-icon" sizes="180x180" href="./newsbd.png">
+  
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "NewsBD Hub",
+  "url": "https://newsbd.psychotech.top/newsbdhub.html",
+  "logo": "https://newsbd.psychotech.top/newsbd_cover.png",
+  "sameAs": [
+    "https://www.facebook.com/humayunshariarhimu"
+  ],
+  "description": "NewsBD Hub: বাংলাদেশের প্রধান বাংলা নিউজ পোর্টালের প্রফেশনাল নিউজ হাব। রাজনীতি, বিনোদন, খেলা, আন্তর্জাতিক ও দেশীয় খবর সহ সর্বশেষ সংবাদ।"
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Bengali:wght@400;700&display=swap');
+
+:root {
+  --primary: #2563eb;
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --border: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #38bdf8;
+}
+
+body.light {
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --border: #cbd5e1;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --accent: #2563eb;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-main);
+  transition: background 0.2s ease;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* --- Sharp Header --- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 5%;
+  background: var(--card-bg);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1.5px solid var(--border);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+
+.navbar {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+select#siteSelect {
+  background: var(--bg);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+#toggleTheme {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Sharp Category Bar --- */
+.category-bar {
+  display: flex;
+  gap: 8px;
+  padding: 12px 5%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--bg);
+}
+
+.category-bar::-webkit-scrollbar { display: none; }
+
+.cat-btn {
+  padding: 6px 16px;
+  border-radius: 4px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.cat-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* --- Main Layout --- */
+.main-view {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 5% 80px;
+}
+
+.viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.viewer-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#openNewTab {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* --- Iframe Area --- */
+.iframe-wrap {
+  width: 100%;
+  height: 75vh;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* --- Fixed Footer --- */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  padding: 10px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  z-index: 1000;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 600px) {
+  header { padding: 10px 4%; }
+  .logo { font-size: 18px; }
+  .main-view { padding-bottom: 60px; }
+  .iframe-wrap { height: 70vh; }
+  select#siteSelect { max-width: 110px; font-size: 12px; }
+  .viewer-header h2 { font-size: 14px; }
+}
+</style>
+<!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSKWQGGTLK"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-GSKWQGGTLK'); </script>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrapper">
+    <a href="./newsbdhub.html" class="logo">NewsBDHub</a>
+</div>
+
+  <div class="navbar">
+    <select id="siteSelect"></select>
+    <button id="toggleTheme">☀️</button>
+  </div>
+</header>
+
+<div class="category-bar" id="categories"></div>
+
+<div class="main-view">
+  <div class="viewer-header">
+    <h2 id="viewerTitle">Latest News</h2>
+    <button id="openNewTab">Open Full Site</button>
+  </div>
+  <div class="iframe-wrap">
+    <iframe id="siteFrame" src="about:blank" title="NewsBD Hub" loading="lazy"></iframe>
+  </div>
+</div>
+
+<footer>
+  <a href="./newsbdhub.html" target="_blank">NewsBDHub</a> Extension of <a href="./index.html" target="_blank">NewsBD</a>
+</footer>
+
+<script>
+// --- [Core Logic: Unchanged] ---
+const SITES = {
+  "প্রথম আলো":{base:"https://www.prothomalo.com",categories:{"মূলপাতা":"/","বাংলাদেশ":"/bangladesh","রাজনীতি":"/politics","বিনোদন":"/entertainment","খেলাধুলা":"/sports"}},
+  "যুগান্তর":{base:"https://www.jugantor.com",categories:{"মূলপাতা":"/","বাংলাদেশ":"/bangladesh","রাজনীতি":"/politics","বিনোদন":"/entertainment","খেলাধুলা":"/sports"}},
+  "ইনকিলাব":{base:"https://www.dailyinqilab.com",categories:{"মূলপাতা":"/","বাংলাদেশ":"/","রাজনীতি":"/","খেলাধুলা":"/sports"}},
+  "দৈনিক জনকণ্ঠ":{base:"https://www.dailyjanakantha.com",categories:{"মূলপাতা":"/","বাংলাদেশ":"/","রাজনীতি":"/","বিনোদন":"/entertainment"}},
+  "সমকাল":{base:"https://samakal.com",categories:{"মূলপাতা":"/","বাংলাদেশ":"/country","রাজনীতি":"/politics","খেলাধুলা":"/sports"}},
+  "BDNews24":{base:"https://bdnews24.com",categories:{"মূলপাতা":"/","বাংলাদেশ":"/bangladesh","রাজনীতি":"/politics","খেলাধুলা":"/sports"}}
+};
+
+const siteSelect = document.getElementById('siteSelect');
+const categoriesEl = document.getElementById('categories');
+const siteFrame = document.getElementById('siteFrame');
+const viewerTitle = document.getElementById('viewerTitle');
+const openNewTabBtn = document.getElementById('openNewTab');
+
+let activeSite = Object.keys(SITES)[0];
+let activeCategory = Object.keys(SITES[activeSite].categories)[0];
+
+function renderSiteOptions(){
+  siteSelect.innerHTML = '';
+  Object.keys(SITES).forEach(site=>{
+    const opt = document.createElement('option');
+    opt.value = site;
+    opt.textContent = site;
+    siteSelect.appendChild(opt);
+  });
+  siteSelect.value = activeSite;
+}
+
+siteSelect.addEventListener('change', e=>{
+  activeSite = e.target.value;
+  activeCategory = Object.keys(SITES[activeSite].categories)[0];
+  renderCategories();
+  loadFrame();
+});
+
+function renderCategories(){
+  categoriesEl.innerHTML='';
+  const cats = SITES[activeSite].categories;
+  Object.entries(cats).forEach(([label,path])=>{
+    const btn = document.createElement('div');
+    btn.className='cat-btn';
+    btn.textContent = label;
+    btn.addEventListener('click',()=>{
+      activeCategory=label;
+      loadFrame();
+    });
+    categoriesEl.appendChild(btn);
+  });
+}
+
+function getFullUrl(){ 
+  const path = SITES[activeSite].categories[activeCategory];
+  const base = SITES[activeSite].base;
+  if(!path) return base;
+  if(base.endsWith('/') && path.startsWith('/')) return base + path.slice(1);
+  if(!base.endsWith('/') && !path.startsWith('/')) return base + '/' + path;
+  return base + path;
+}
+
+function loadFrame(){
+  const url = getFullUrl();
+  siteFrame.src = url;
+  viewerTitle.textContent = activeCategory;
+}
+
+openNewTabBtn.addEventListener('click', ()=>{ window.open(getFullUrl(),'_blank'); });
+
+document.getElementById('toggleTheme').addEventListener('click', ()=>{
+  const isLight = document.body.classList.toggle('light');
+  document.getElementById('toggleTheme').textContent = isLight ? '🌙' : '☀️';
+});
+
+renderSiteOptions();
+renderCategories();
+loadFrame();
+</script>
+</body>
+</html>

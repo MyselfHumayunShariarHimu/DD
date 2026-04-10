@@ -1,0 +1,44 @@
+# NewsBD — robots.txt
+# https://newsbd.psychotech.top
+
+User-agent: *
+Allow: /
+Disallow: /search.html
+
+# Allow major search engines full access
+User-agent: Googlebot
+Allow: /
+Disallow: /search.html
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Disallow: /search.html
+Crawl-delay: 2
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://newsbd.psychotech.top/sitemap.xml
+Host: newsbd.psychotech.top

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — পেজ পাওয়া যায়নি | NewsBD</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="./newsbd.png" type="image/png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .error-page { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:40px 20px; }
+    .error-code { font-family:'Orbitron',sans-serif; font-size:clamp(5rem,25vw,10rem); font-weight:700; background:linear-gradient(90deg,var(--primary),var(--secondary)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
+    .error-title { font-family:'Orbitron',sans-serif; font-size:clamp(1rem,4vw,1.6rem); color:var(--text); margin:12px 0 8px; }
+    .error-sub { font-size:0.9rem; color:var(--muted); margin-bottom:32px; max-width:400px; line-height:1.6; }
+    .error-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+    .btn-primary { padding:12px 28px; background:var(--primary); color:#020617; border:none; border-radius:10px; font-weight:700; font-size:0.9rem; text-decoration:none; transition:all 0.2s; }
+    .btn-primary:hover { background:#00cc70; transform:translateY(-2px); }
+    .btn-secondary { padding:12px 28px; background:transparent; color:var(--text); border:1px solid var(--glass-border); border-radius:10px; font-size:0.9rem; text-decoration:none; transition:all 0.2s; }
+    .btn-secondary:hover { border-color:var(--primary); color:var(--primary); }
+    .error-search { display:flex; gap:8px; margin-top:32px; max-width:400px; width:100%; }
+  </style>
+</head>
+<body>
+  <div class="nb-page">
+    <div class="error-page">
+      <div class="error-code anim-up">404</div>
+      <h1 class="error-title anim-up anim-up-1">পেজ পাওয়া যায়নি</h1>
+      <p class="error-sub anim-up anim-up-2">আপনি যে পেজটি খুঁজছেন সেটি সরানো হয়েছে বা এই ঠিকানাটি বিদ্যমান নেই।</p>
+      <div class="error-btns anim-up anim-up-3">
+        <a href="./index.html" class="btn-primary"><i class="fa fa-house"></i> হোমে যান</a>
+        <a href="./newsbdhub.html" class="btn-secondary"><i class="fa fa-newspaper"></i> NewsHub</a>
+      </div>
+      <div class="error-search anim-up anim-up-4">
+        <div class="nb-search-wrap" style="max-width:400px;">
+          <input type="search" id="err-search" class="nb-search-input" placeholder="খবর খুঁজুন..." autocomplete="off">
+          <button class="nb-search-btn" id="err-search-btn" aria-label="Search"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./nb-components.js"></script>
+  <script>
+    const CX = '71bce4ff67b1745ad';
+    function go() {
+      const q = document.getElementById('err-search').value.trim();
+      if (q) window.location.href = `./search.html?cx=${encodeURIComponent(CX)}&q=${encodeURIComponent(q)}`;
+    }
+    document.getElementById('err-search-btn').addEventListener('click', go);
+    document.getElementById('err-search').addEventListener('keydown', e => { if (e.key==='Enter') go(); });
+  </script>
+</body>
+</html>

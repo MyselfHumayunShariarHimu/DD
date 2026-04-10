@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>অনুসন্ধান ফলাফল | NewsBD</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="./newsbd.png" type="image/png">
+  <link rel="apple-touch-icon" href="./newsbd.png">
+  <link rel="stylesheet" href="./shared.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ── No navbar on this page ── */
+    .nb-nav, .nb-overlay { display: none !important; }
+    .nb-footer { display: none !important; }
+    body { padding-top: 0 !important; }
+    .nb-page { padding-top: 0 !important; }
+
+    /* ── Compact top bar ── */
+    .search-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 800;
+      background: rgba(2,6,23,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 10px clamp(12px,3vw,32px);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      padding: 8px 12px;
+      border: 1px solid rgba(0,255,136,0.25);
+      border-radius: 8px;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .back-btn:hover {
+      background: rgba(0,255,136,0.07);
+      border-color: var(--primary);
+    }
+
+    /* Search bar in topbar */
+    .search-topbar .nb-search-wrap {
+      flex: 1;
+      max-width: 640px;
+    }
+    .search-topbar .nb-search-input {
+      padding: 12px 20px;
+      padding-right: 56px;
+      font-size: 0.95rem;
+    }
+    .search-topbar .nb-search-btn {
+      width: 42px;
+      height: 42px;
+      font-size: 0.9rem;
+    }
+
+    .brand-badge {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--primary);
+      border: 1px solid rgba(0,255,136,0.3);
+      border-radius: 6px;
+      padding: 5px 11px;
+      white-space: nowrap;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ── Results wrapper ── */
+    .results-wrap {
+      flex: 1;
+      padding: clamp(16px,3vw,30px) clamp(14px,4vw,52px);
+      max-width: 1060px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .result-meta {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .result-meta span { color: var(--primary); font-weight: 600; }
+
+    /* ══ Google CSE Deep Overrides ═══════════════════════ */
+    .gsc-control-cse,
+    .gsc-control-cse * {
+      background: transparent !important;
+      border-color: transparent !important;
+      font-family: 'Rajdhani','Hind Siliguri',sans-serif !important;
+      box-shadow: none !important;
+    }
+
+    /* Result cards */
+    .gsc-result {
+      background: var(--card) !important;
+      border: 1px solid var(--glass-border) !important;
+      border-radius: 12px !important;
+      padding: 16px 18px !important;
+      margin-bottom: 10px !important;
+      transition: border-color 0.2s, box-shadow 0.2s !important;
+    }
+    .gsc-result:hover {
+      border-color: rgba(0,255,136,0.38) !important;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.3) !important;
+    }
+
+    /* Title */
+    .gs-title, .gs-title * {
+      color: var(--primary) !important;
+      font-size: 1.05rem !important;
+      font-weight: 600 !important;
+      text-decoration: none !important;
+    }
+    .gs-title:hover, .gs-title *:hover {
+      color: #fff !important;
+      text-shadow: 0 0 10px rgba(0,255,136,0.4) !important;
+    }
+
+    /* URL */
+    .gsc-url-top, .gsc-url-bottom, .gs-visibleUrl {
+      color: var(--secondary) !important;
+      font-size: 0.77rem !important;
+    }
+
+    /* Snippet */
+    .gs-snippet, .gsc-body-text {
+      color: #94a3b8 !important;
+      font-size: 0.9rem !important;
+      line-height: 1.55 !important;
+    }
+
+    /* ── Pagination — fully visible & styled ── */
+    .gsc-cursor-box {
+      padding: 28px 0 16px !important;
+      display: flex !important;
+      justify-content: center !important;
+      gap: 8px !important;
+      flex-wrap: wrap !important;
+    }
+    .gsc-cursor-page {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: 38px !important;
+      height: 38px !important;
+      padding: 0 12px !important;
+      color: var(--primary) !important;
+      background: rgba(0,255,136,0.08) !important;
+      border: 1px solid rgba(0,255,136,0.35) !important;
+      border-radius: 8px !important;
+      font-size: 0.95rem !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      transition: all 0.2s !important;
+      font-family: 'Orbitron', sans-serif !important;
+      text-decoration: none !important;
+    }
+    .gsc-cursor-page:hover {
+      background: rgba(0,255,136,0.18) !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 12px rgba(0,255,136,0.25) !important;
+    }
+    .gsc-cursor-current-page {
+      color: #020617 !important;
+      background: var(--primary) !important;
+      border-color: var(--primary) !important;
+      box-shadow: 0 0 14px rgba(0,255,136,0.4) !important;
+    }
+
+    /* Next / Prev labels inside cursor */
+    .gsc-cursor-next-page,
+    .gsc-cursor-previous-page {
+      color: #f1f5f9 !important;
+      background: rgba(14,165,233,0.12) !important;
+      border-color: rgba(14,165,233,0.4) !important;
+      font-family: 'Rajdhani', sans-serif !important;
+      font-size: 0.88rem !important;
+      letter-spacing: 0.5px !important;
+    }
+    .gsc-cursor-next-page:hover,
+    .gsc-cursor-previous-page:hover {
+      background: rgba(14,165,233,0.25) !important;
+      border-color: var(--secondary) !important;
+      color: #fff !important;
+    }
+
+    /* Hide unwanted Google elements */
+    .gsc-search-box,
+    .gsc-input-box,
+    .gsc-search-button,
+    table.gsc-search-box              { display: none !important; }
+
+    .gsc-above-wrapper-area           { display: none !important; }
+
+    /* "Enhanced by Google" / branding — hide all variants */
+    .gcsc-more-maybe-branding-root,
+    .gcsc-branding,
+    .gcsc-branding-text,
+    .gcsc-branding-img,
+    .gcsc-find-more-on-google,
+    .gcsc-find-more-on-google-root,
+    .gsc-results-wrapper-overlay .gcsc-more-maybe-branding-root,
+    [class*="gcsc-branding"],
+    [class*="gcsc-more"],
+    [class*="gcsc-find-more"]         { display: none !important; }
+
+    /* Thumbnail hide */
+    .gsc-thumbnail-inside .gs-image-box { display: none !important; }
+
+    /* Make result display properly */
+    .gsc-webResult.gsc-result { display: block !important; }
+
+    /* ── Loading spinner ── */
+    .search-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .spinner {
+      width: 42px; height: 42px;
+      border: 3px solid rgba(0,255,136,0.12);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media(max-width:600px){
+      .brand-badge { display: none; }
+      .gs-title, .gs-title * { font-size: 0.9rem !important; }
+      .gsc-cursor-page { min-width: 34px !important; height: 34px !important; font-size: 0.82rem !important; }
+      .back-btn span { display: none; }
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GSKWQGGTLK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GSKWQGGTLK');</script>
+</head>
+<body>
+
+  <!-- nb-components.js will inject navbar+footer — we hide them via CSS above -->
+  <div class="nb-page">
+
+    <!-- ── Top bar (no full navbar) ── -->
+    <div class="search-topbar">
+      <a href="javascript:history.back()" class="back-btn" id="back-link">
+        <i class="fa fa-arrow-left"></i>
+        <span id="back-label">NewsBD</span>
+      </a>
+
+      <div class="nb-search-wrap">
+        <input type="search" id="top-search" class="nb-search-input"
+               autocomplete="off" spellcheck="false" placeholder="আবার খুঁজুন...">
+        <button class="nb-search-btn" id="top-search-btn" aria-label="Search">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+
+      <div class="brand-badge" id="brand-badge">NewsBD</div>
+    </div>
+
+    <!-- ── Results ── -->
+    <div class="results-wrap">
+      <p class="result-meta">
+        "<span id="query-display"></span>" এর ফলাফল
+      </p>
+
+      <!-- Loading -->
+      <div class="search-loading" id="search-loading">
+        <div class="spinner"></div>
+        <p>সংবাদ খুঁজছি...</p>
+      </div>
+
+      <!-- CSE output -->
+      <div id="cse-results" style="display:none;">
+        <div class="gcse-searchresults-only" id="gsc-results-root"></div>
+      </div>
+    </div>
+
+  </div><!-- .nb-page -->
+
+  <script src="./nb-components.js"></script>
+
+  <script>
+    // ── Params ──────────────────────────────────────────
+    const params = new URLSearchParams(window.location.search);
+    const cx     = params.get('cx')    || '71bce4ff67b1745ad';
+    const query  = params.get('q')     || '';
+    const brand  = params.get('brand') || 'NewsBD';
+    const isNewsBag = brand === 'NewsBag';
+
+    // Update UI
+    document.title = `"${query}" — অনুসন্ধান | ${brand}`;
+    document.getElementById('query-display').textContent  = query;
+    document.getElementById('top-search').value           = query;
+    document.getElementById('brand-badge').textContent    = brand;
+    document.getElementById('back-label').textContent     = brand;
+    document.getElementById('back-link').href             = isNewsBag ? './newsbag.html' : './index.html';
+
+    // NewsBag = blue accent
+    if (isNewsBag) {
+      document.documentElement.style.setProperty('--primary',      '#00d2ff');
+      document.documentElement.style.setProperty('--glass-border', 'rgba(0,210,255,0.2)');
+    }
+
+    // ── Inject Google CSE ────────────────────────────────
+    window.__gcse = {
+      parsetags: 'explicit',
+      callback: function () {
+        if (window.google && google.search && google.search.cse) {
+          google.search.cse.element.render({
+            div: 'gsc-results-root',
+            tag: 'searchresults-only',
+            gname: 'nb-search'
+          });
+          google.search.cse.element.getElement('nb-search').execute(query);
+          hide('search-loading');
+          show('cse-results');
+          // Retry branding removal after render
+          setTimeout(removeBranding, 800);
+          setTimeout(removeBranding, 2000);
+        }
+      }
+    };
+
+    const cseScript  = document.createElement('script');
+    cseScript.src    = `https://cse.google.com/cse.js?cx=${encodeURIComponent(cx)}`;
+    cseScript.async  = true;
+    document.head.appendChild(cseScript);
+
+    // Fallback
+    setTimeout(() => {
+      if (getEl('search-loading').style.display !== 'none') {
+        hide('search-loading');
+        show('cse-results');
+      }
+      removeBranding();
+    }, 3800);
+
+    // ── Remove "Enhanced by Google" at runtime ────────────
+    function removeBranding() {
+      const selectors = [
+        '.gcsc-more-maybe-branding-root',
+        '.gcsc-branding',
+        '.gcsc-find-more-on-google',
+        '.gcsc-find-more-on-google-root',
+        '[class*="gcsc-branding"]',
+        '[class*="gcsc-more"]',
+        '[class*="gcsc-find"]',
+        '.gsc-above-wrapper-area',
+      ];
+      selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => el.remove());
+      });
+    }
+
+    // Also watch DOM mutations for late-injected branding
+    const obs = new MutationObserver(() => removeBranding());
+    obs.observe(document.body, { childList: true, subtree: true });
+
+    // ── Re-search ────────────────────────────────────────
+    function reSearch() {
+      const q = getEl('top-search').value.trim();
+      if (!q) return;
+      window.location.href =
+        `./search.html?cx=${encodeURIComponent(cx)}&q=${encodeURIComponent(q)}&brand=${encodeURIComponent(brand)}`;
+    }
+    document.getElementById('top-search-btn').addEventListener('click', reSearch);
+    document.getElementById('top-search').addEventListener('keydown', e => {
+      if (e.key === 'Enter') reSearch();
+    });
+
+    // ── Helpers ──────────────────────────────────────────
+    function getEl(id) { return document.getElementById(id); }
+    function hide(id)  { getEl(id).style.display = 'none'; }
+    function show(id)  { getEl(id).style.display = 'block'; }
+  </script>
+</body>
+</html>
